@@ -34,36 +34,78 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  /* Other Variable Declarations Go Here */
-  /* Statistics and Printing Functions Go Here */
+  print_statistics(test, SIZE);
 
 }
 
-unsigned char print_array(unsigned char *, unsigned int) {
+void print_statistics(unsigned char * data, unsigned int num_elements) {
+
+	printf("\nData to be analyzed:\n");
+	print_array(data, num_elements);
+
+	sort_array(data, num_elements);
+
+	printf("Sorted data:\n");
+	print_array(data, num_elements);
+
+
+}
+
+void print_array(unsigned char * data, unsigned int num_elements) {
 	
+	printf("   ");
+	// Iterate through data array and print each element with new line after every 10 elements
+	for (int i = 0; i < num_elements; i++) {
+		printf("%5d ", data[i]);
+		if (i % 10 == 9)
+			printf("\n   ");
+	}
+
+	printf("\n");
+
 }
 
 
-unsigned char find_median(unsigned char *, unsigned int) {
+unsigned char find_median(unsigned char * data, unsigned int num_elements) {
 	
+
+
 }
 
 
-unsigned char find_mean(unsigned char *, unsigned int) {
+// unsigned char find_mean(unsigned char * data, unsigned int num_elements) {
 	
-}
+// }
 
 
-unsigned char find_maximum(unsigned char *, unsigned int) {
+// unsigned char find_maximum(unsigned char * data, unsigned int num_elements) {
 	
-}
+// }
 
 
-unsigned char find_minimum(unsigned char *, unsigned int) {
+// unsigned char find_minimum(unsigned char * data, unsigned int num_elements) {
 	
-}
+// }
 
 
-unsigned char sort_array(unsigned char *, unsigned int) {
+void sort_array(unsigned char * data, unsigned int num_elements) {
+
+	// Use selection sort
+	for (int i = 0; i < num_elements - 1; i++) {
+		int min_ind = i; // Assume current value is minimum
+
+		// Search array past current value
+		for (int j = i + 1; j < num_elements; j++) {
+			if (data[j] < data[min_ind])
+				min_ind = j;
+		}
+
+		// If new minimum is found, swap with current minimum
+		if (min_ind != i) { // If 
+			unsigned char temp = data[i];
+			data[i] = data[min_ind];
+			data[min_ind] = temp;
+		}
+	}
 	
 }
