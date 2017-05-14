@@ -1,1 +1,3 @@
-/* Add Author and Project Details here */
+Thomas Nabelek
+
+This code is written for the Week 1 Application Assignment for the Introduction to Embedded Systems Software and Development Environments course through the University of Colorado Boulder via Coursera.  The description is given as: "In this programming assignment you will create a simple application that performs statistical analytics on a dataset. This assignment will help you get re-oriented with c-programming syntax and host machine compilation. We begin by setting up a version control repository on your local machine. You will then develop and test your code there. When complete, you will upload a zip of your repository to Coursera."

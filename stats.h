@@ -9,32 +9,103 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.h
+ * @brief Header file for Week 1 Application Assignment
  *
- * <Add Extended Description Here>
+ * This application performs statistical analytics on a dataset.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Thomas Nabelek
+ * @date May 2017
  *
  */
+
 #ifndef __STATS_H__
 #define __STATS_H__
 
-/* Add Your Declarations and Function Comments here */ 
-
+void print_statistics(unsigned char * data, unsigned int num_elements);
 /**
- * @brief <Add Brief Description of Function Here>
+ * @brief A function that prints the statistics of an array including minimum, maximum, mean, and median
  *
- * <Add Extended Description Here>
+ * This function takes an array of data and uses the other provided functions to calculate and then display the desired statistic
  *
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
- * @param <Add InputName> <add description here>
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
  *
- * @return <Add Return Informaiton here>
+ * @return void
  */
+
+void print_array(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, prints the array to the screen
+ *
+ * N/A
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return void
+ */
+
+unsigned char find_median(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, returns the median value
+ *
+ * N/A
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return median : median of values in data
+ */
+
+unsigned char find_mean(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, returns the mean
+ *
+ * N/A
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return mean : mean of values in data
+ */
+
+unsigned char find_maximum(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, returns the maximum
+ *
+ * N/A
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return max : maximum of values in data
+ */
+
+unsigned char find_minimum(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, returns the minimum
+ *
+ * N/A
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return min : min of values in data
+ */
+
+void sort_array(unsigned char *, unsigned int);
+/**
+ * @brief Given an array of data and a length, sorts the array from largest to smallest.
+ *
+ * Returns the referenced array with the zeroth element as the largest value, and the last element (n-1) as the smallest value.
+ *
+ * @param data : array of data to be analyzed
+ * @param nun_elements : the number of elements (or length) stored in data
+ *
+ * @return void
+ */
+
 
 
 #endif /* __STATS_H__ */

@@ -1,4 +1,4 @@
-/******************************************************************************
+				/******************************************************************************
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
  * Redistribution, modification or use of this software in source or binary
@@ -9,16 +9,15 @@
  *
  *****************************************************************************/
 /**
- * @file <Add File Name> 
- * @brief <Add Brief Description Here >
+ * @file stats.c
+ * @brief Program file for Week 1 Application Assignment
  *
- * <Add Extended Description Here>
+ * This application performs statistical analytics on a dataset.
  *
- * @author <Add FirsName LastName>
- * @date <Add date >
+ * @author Thomas Nabelek
+ * @date May 2017
  *
  */
-
 
 
 #include <stdio.h>
@@ -40,4 +39,31 @@ void main() {
 
 }
 
-/* Add other Implementation File Code Here */
+unsigned char print_array(unsigned char *, unsigned int) {
+	
+}
+
+
+unsigned char find_median(unsigned char *, unsigned int) {
+	
+}
+
+
+unsigned char find_mean(unsigned char *, unsigned int) {
+	
+}
+
+
+unsigned char find_maximum(unsigned char *, unsigned int) {
+	
+}
+
+
+unsigned char find_minimum(unsigned char *, unsigned int) {
+	
+}
+
+
+unsigned char sort_array(unsigned char *, unsigned int) {
+	
+}
