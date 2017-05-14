@@ -26,7 +26,8 @@ void print_statistics(unsigned char * data, unsigned int num_elements);
 /**
  * @brief A function that prints the statistics of an array including minimum, maximum, mean, and median
  *
- * This function takes an array of data and uses the other provided functions to calculate and then display the desired statistic
+ * This function takes an array of data and uses the other provided functions to calculate and then
+ * display the desired statistic.  No values are returned.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
@@ -38,7 +39,8 @@ void print_array(unsigned char * data, unsigned int num_elements);
 /**
  * @brief Given an array of data and a length, prints the array to the screen
  *
- * N/A
+ * This function prints the contents of 'data' to the command line in rows
+ * of 10 eleents each.  No values are returned.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
@@ -50,7 +52,8 @@ unsigned char find_median(unsigned char * data, unsigned int num_elements);
 /**
  * @brief Given an array of data and a length, returns the median value
  *
- * N/A
+ * This function finds the median value of the elements in 'data' and
+ * returns that value as an unsigned char.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
@@ -62,7 +65,8 @@ unsigned char find_mean(unsigned char * data, unsigned int num_elements);
 /**
  * @brief Given an array of data and a length, returns the mean
  *
- * N/A
+ * This function finds the mean value of the elements in 'data' and
+ * returns that value as an unsigned char.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
@@ -74,7 +78,8 @@ unsigned char find_maximum(unsigned char * data, unsigned int num_elements);
 /**
  * @brief Given an array of data and a length, returns the maximum
  *
- * N/A
+ * This function finds the maximum value of the elements in 'data' and
+ * returns that value as an unsigned char.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
@@ -86,7 +91,8 @@ unsigned char find_minimum(unsigned char * data, unsigned int num_elements);
 /**
  * @brief Given an array of data and a length, returns the minimum
  *
- * N/A
+ * This function finds the minimum value of the elements in 'data' and
+ * returns that value as an unsigned char.
  *
  * @param data : array of data to be analyzed
  * @param nun_elements : the number of elements (or length) stored in data
