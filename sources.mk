@@ -13,23 +13,25 @@
 # Platform Overrides
 PLATFORM = HOST
 
-SRCS_ALL = main.c \
-	memory.c \
-	interrupts_msp432p401r_gcc.c \
-	startup_msp432p401r_gcc.c \
-	system_msp432p401r.c
+SOURCE_PATH = src/
+
+SRCS_ALL = $(SOURCE_PATH)main.c \
+	$(SOURCE_PATH)memory.c \
+	$(SOURCE_PATH)interrupts_msp432p401r_gcc.c \
+	$(SOURCE_PATH)startup_msp432p401r_gcc.c \
+	$(SOURCE_PATH)system_msp432p401r.c
 
 ifeq ($(PLATFORM), HOST)
-	SOURCES = main.c \
-	memory.c
+	SOURCES = $(SOURCE_PATH)main.c \
+	$(SOURCE_PATH)memory.c
 
-	INCLUDES = -I../include/common
+	INCLUDES = -Iinclude/common
 
 else
 	SOURCES = SRCS_ALL
 
-	INCLUDES = -I../include/CMSIS \
-	-I../include/common \
-	-I../include/msp432
+	INCLUDES = -Iinclude/CMSIS \
+	-Iinclude/common \
+	-Iinclude/msp432
 
 endif

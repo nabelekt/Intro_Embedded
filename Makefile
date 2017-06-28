@@ -79,21 +79,24 @@ else
 	DEP_FILES = $(SRCS:.c=.d)
 endif
 
-O_FILES_ALL = $(SRCS_ALL:.c=.o)
-MAP_FILES = $(SRCS_ALL:.c=.map)
-OUT_FILES = $(SRCS_ALL:.c=.out)
-ASM_FILES = $(SRCS_ALL:.c=.asm)
-I_FILES = $(SRCS_ALL:.c=.i)
-DEP_FILES_ALL = $(SRCS_ALL:.c=.d)
-
 # General Flags
 CPPFLAGS = $(TARGET_FLAGS)
 CFLAGS = -Wall -Werror -g -O0 -std=c99 $(CPPFLAGS) $(INCLUDES)
 
+ifdef VERBOSE
+	CPPFLAGS += -DVERBOSE
+endif
+
+ifdef COURSE1
+	CPPFLAGS += -DCOURSE1
+endif
+
+OUT_DIR = output/
+
 # Targets
 # Generate preprocessed output for c-source files
 %.i: %.c
-	$(CC) -E $(CFLAGS) $(PLATFORM_FLAGS) $< -o $@
+	$(CC) -E $(CFLAGS) $(PLATFORM_FLAGS) $< -o $(OUT_DIR)$@
 
 # Generate assembly output for c-source files
 %.asm: %.c
@@ -111,11 +114,20 @@ CFLAGS = -Wall -Werror -g -O0 -std=c99 $(CPPFLAGS) $(INCLUDES)
 .PHONY: compile-all
 compile-all: clean $(O_FILES)
 
-# Compile all object files and link into a final executable
+# Compile all object files and link into a final executable, and produce map file
 .PHONY: build
-build: clean $(DEP_FILES) $(O_FILES)
+build: $(DEP_FILES) $(O_FILES)
 	$(CC) $(CFLAGS) $(PLATFORM_FLAGS) $(LDFLAGS) -Wl,-Map,c1m2.map $(O_FILES) -o c1m2.out
 	size c1m2.out
+
+OUT_ALL = $(SRCS_ALL:src/=output/)
+
+O_FILES_ALL = $(OUT_ALL:.c=.o)
+MAP_FILES = $(OUT_ALL:.c=.map)
+OUT_FILES = $(OUT_ALL:.c=.out)
+ASM_FILES = $(OUT_ALL:.c=.asm)
+I_FILES = $(OUT_ALL:.c=.i)
+DEP_FILES_ALL = $(OUT_ALL:.c=.d)
 
 .PHONY: clean
 clean:

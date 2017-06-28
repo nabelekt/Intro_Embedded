@@ -48,22 +48,24 @@ void print_statistics(unsigned char * data, unsigned int num_elements) {
     printf("Minimum: %d\n", find_minimum(data, num_elements));
 
     sort_array(data, num_elements);
-    printf("\nSorted data:\n");
+    // printf("\nSorted data:\n");
     print_array(data, num_elements);
 
 }
 
 void print_array(unsigned char * data, unsigned int num_elements) {
     
-    printf("   ");
-    // Iterate through data array and print each element with new line after every 10 elements
-    for (int i = 0; i < num_elements; i++) {
-        printf("%5d ", data[i]);
-        if (i % 10 == 9)
-            printf("\n   ");
-    }
+    #ifdef VERBOSE // If verbose mode is enabled with compile time switch
+        printf("   ");
+        // Iterate through data array and print each element with new line after every 10 elements
+        for (int i = 0; i < num_elements; i++) {
+            printf("%5d ", data[i]);
+            if (i % 10 == 9)
+                printf("\n   ");
+        }
 
-    printf("\n");
+        printf("\n");
+    #endif
 
 }
 
