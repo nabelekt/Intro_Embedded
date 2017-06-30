@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include "platform.h"
-#include "memory.h"
+#include "course1.h"
 
 int main(void) {
   

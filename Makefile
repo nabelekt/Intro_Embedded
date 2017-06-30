@@ -50,12 +50,14 @@
 #------------------------------------------------------------------------------
 include sources.mk
 
+# VERBOSE = 1;
+# COURSE1 = 1;
+
 # Compiler Flags and Defines
 ifeq ($(PLATFORM), HOST)
 	CC = gcc
 	TARGET_FLAGS = -DHOST
 	
-	SRCS = main.c memory.c
 	O_FILES = $(SRCS:.c=.o)
 	DEP_FILES = $(SRCS:.c=.d)
 else
@@ -74,7 +76,6 @@ else
 		-mfloat-abi=hard \
 		-mfpu=fpv4-sp-d16
 
-	SRCS = main.c memory.c system_msp432p401r.c startup_msp432p401r_gcc.c interrupts_msp432p401r_gcc.c
 	O_FILES = $(SRCS:.c=.o)
 	DEP_FILES = $(SRCS:.c=.d)
 endif
@@ -83,20 +84,18 @@ endif
 CPPFLAGS = $(TARGET_FLAGS)
 CFLAGS = -Wall -Werror -g -O0 -std=c99 $(CPPFLAGS) $(INCLUDES)
 
-ifdef VERBOSE
+# ifeq ($(VERBOSE), 1)
 	CPPFLAGS += -DVERBOSE
-endif
+# endif
 
-ifdef COURSE1
+# ifeq ($(COURSE1), 1)
 	CPPFLAGS += -DCOURSE1
-endif
-
-OUT_DIR = output/
+# endif
 
 # Targets
 # Generate preprocessed output for c-source files
 %.i: %.c
-	$(CC) -E $(CFLAGS) $(PLATFORM_FLAGS) $< -o $(OUT_DIR)$@
+	$(CC) -E $(CFLAGS) $(PLATFORM_FLAGS) $< -o $@
 
 # Generate assembly output for c-source files
 %.asm: %.c
@@ -108,19 +107,20 @@ OUT_DIR = output/
 
 # Generate the dependency file for a given c-source file
 %.d: %.c
-	$(CC) -c $(CFLAGS) $(PLATFORM_FLAGS) -M $< > $@
+	$(CC) -c $(CFLAGS) $(PLATFORM_FLAGS) -M $< -o $@
+
+# Compile all object files and link into a final executable, and produce map file
+.PHONY: build
+build: $(DEP_FILES) $(O_FILES)
+	$(CC) $(CFLAGS) $(PLATFORM_FLAGS) $(LDFLAGS) -Wl,-Map,c1m4.map $(O_FILES) -lm -o c1m4.out
+	size c1m4.out
 
 # Compile all object files, but do not link
 .PHONY: compile-all
 compile-all: clean $(O_FILES)
 
-# Compile all object files and link into a final executable, and produce map file
-.PHONY: build
-build: $(DEP_FILES) $(O_FILES)
-	$(CC) $(CFLAGS) $(PLATFORM_FLAGS) $(LDFLAGS) -Wl,-Map,c1m2.map $(O_FILES) -o c1m2.out
-	size c1m2.out
-
-OUT_ALL = $(SRCS_ALL:src/=output/)
+OUT_ALL = $(SRCS_ALL)
+# OUT_ALL = $(SRCS_ALL:src/=output/)
 
 O_FILES_ALL = $(OUT_ALL:.c=.o)
 MAP_FILES = $(OUT_ALL:.c=.map)
@@ -131,4 +131,4 @@ DEP_FILES_ALL = $(OUT_ALL:.c=.d)
 
 .PHONY: clean
 clean:
-	rm $(O_FILES_ALL) $(MAP_FILES) $(OUT_FILES) $(ASM_FILES) $(I_FILES) $(DEP_FILES_ALL) c1m2.map c1m2.out -f
+	rm $(O_FILES_ALL) $(MAP_FILES) $(OUT_FILES) $(ASM_FILES) $(I_FILES) $(DEP_FILES_ALL) c1m4.map c1m4.out -f

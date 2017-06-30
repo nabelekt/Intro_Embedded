@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <stddef.h>
 #include "platform.h"
 #include "course1.h"
 #include "memory.h"
@@ -39,8 +40,8 @@ int8_t test_data1() {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_16);   
-  value = my_atoi( ptr, digits, BASE_16);
+  digits = my_itoa( num, ptr, 16);   
+  value = my_atoi( ptr, digits, 16);
   #ifdef VERBOSE
   printf("  Initial number: %d\n", num);  
   printf("  Final Decimal number: %d\n", value);  
@@ -68,8 +69,8 @@ int8_t test_data2() {
     return TEST_ERROR;
   }
 
-  digits = my_itoa( num, ptr, BASE_10);
-  value = my_atoi( ptr, digits, BASE_10);
+  digits = my_itoa( num, ptr, 10);
+  value = my_atoi( ptr, digits, 10);
   #ifdef VERBOSE
   printf("  Initial Decimal number: %d\n", num);  
   printf("  Final Decimal number: %d\n", value);  
@@ -303,13 +304,12 @@ int8_t test_reverse()
   {
     return TEST_ERROR;
   }
-  
+
   my_memcopy(set, copy, MEM_SET_SIZE_B);
 
   print_array(set, MEM_SET_SIZE_B);
   my_reverse(set, MEM_SET_SIZE_B);
   print_array(set, MEM_SET_SIZE_B);
-
   for (i = 0; i < MEM_SET_SIZE_B; i++)
   {
     if (set[i] != copy[MEM_SET_SIZE_B - i - 1])

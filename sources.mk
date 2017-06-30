@@ -19,16 +19,22 @@ SRCS_ALL = $(SOURCE_PATH)main.c \
 	$(SOURCE_PATH)memory.c \
 	$(SOURCE_PATH)interrupts_msp432p401r_gcc.c \
 	$(SOURCE_PATH)startup_msp432p401r_gcc.c \
-	$(SOURCE_PATH)system_msp432p401r.c
+	$(SOURCE_PATH)system_msp432p401r.c \
+	$(SOURCE_PATH)course1.c \
+	$(SOURCE_PATH)data.c \
+	$(SOURCE_PATH)stats.c
 
 ifeq ($(PLATFORM), HOST)
-	SOURCES = $(SOURCE_PATH)main.c \
-	$(SOURCE_PATH)memory.c
+	SRCS = $(SOURCE_PATH)main.c \
+	$(SOURCE_PATH)memory.c \
+	$(SOURCE_PATH)course1.c \
+	$(SOURCE_PATH)data.c \
+	$(SOURCE_PATH)stats.c
 
 	INCLUDES = -Iinclude/common
 
 else
-	SOURCES = SRCS_ALL
+	SRCS = SRCS_ALL
 
 	INCLUDES = -Iinclude/CMSIS \
 	-Iinclude/common \
